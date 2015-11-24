@@ -10,17 +10,10 @@ namespace CustomAuth.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         // GET: Home
         public ActionResult Index()
         {
-            var clave = ConfigurationManager.AppSettings["ClaveCifrado"];
-
-            var cifrado = SeguridadUtility.Encrypt("Hola mundo", clave);
-
-            var data = Convert.FromBase64String(cifrado);
-
-            var descifre = SeguridadUtility.Decrypt(data, clave);
-
             return View();
         }
     }
